@@ -264,3 +264,36 @@ where host_id in (select host_id
 order by id
 ```
 
+
+
+# Solvesql 연습 문제
+
+
+
+## 01. SUBSTR
+
+![1](SQL_TEST_PRACTICE.assets/1-16533700489472.png)
+
+```
+SUBSTR() 함수는 SUBSTR(문자열, 시작위치, 나타낼 개수)의 문법을 통해 특정 문자열을 잘라주는 기능을 가진다.
+
+EX) SUBSTR('KOREA',1,3) -> 'KOR'
+
+<정답 쿼리 2>
+
+SELECT YEAR, UPPER(LEFT(CITY,3))
+FROM GAMES
+WHERE YEAR >= 2000
+ORDER BY CITY
+```
+
+
+
+## 02. VARIANCE
+
+![1](SQL_TEST_PRACTICE.assets/1-16533781240593.png)
+
+```
+표본분산을 구할 수 있는 함수로 VARIANCE가 있다.
+```
+
