@@ -297,3 +297,5 @@ ORDER BY CITY
 표본분산을 구할 수 있는 함수로 VARIANCE가 있다.
 ```
 
+
+
