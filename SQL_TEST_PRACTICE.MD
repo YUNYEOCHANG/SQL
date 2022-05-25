@@ -299,3 +299,42 @@ ORDER BY CITY
 
 
 
+# HACKERRANK
+
+
+
+## 01. Type of Triangle(CASE, LOGIC)
+
+![2](SQL_TEST_PRACTICE.assets/2-16534869410072.png)
+
+![3](SQL_TEST_PRACTICE.assets/3-16534869410061.png)
+
+```
+<오답 작성 쿼리>
+select case
+           when a = b and a = c then 'Equilateral'
+           when a <> b and a <> c and b <> c then 'Scalene'
+           when a = b and a <> c then 'Isosceles' 
+           when b = c and b <> a then 'Isosceles' 
+           when a = c and a <> b then 'Isosceles'
+           else 'Not A Triangle'
+       end 
+from TRIANGLES
+
+------------------------
+<정답 작성 쿼리>
+
+SELECT CASE
+            WHEN a = b and a = c then 'Equilateral'  --1
+            WHEN a + b <= c or a + c <= b or b + c <= a then 'Not A Triangle' --2
+            WHEN a = b or b = c or a = c then 'Isosceles' --3
+            ELSE 'Scalene' --4
+        END 
+FROM TRIANGLES
+
+
+이 문제는 CASE 문법을 활용할 줄 아는 것도 중요하지만 logic이 가장 중요하다. SQL도 PYTHON 처럼 위에서 아래로 읽어 내려간다. PYHTON에서 IF THEN 문법과 마찬가지로 가장 위에 있는 문법에서 충족되면 아래 문법으로 렌더링 하지 않는다. 즉 위의 정답쿼리로 살펴본다면, --3인 이등변 삼각형 조건이 --1 보다 위에 있으면 정삼각형은 --3의 조건도 충족되기 때문에 'Equilateral'이 아닌 'Isosceles'으로 분류된다는 것이다. 
+
+ 또한 수학적 사고가 필요한 문제였다. --2가 --3이나 --4와 순서가 뒤바뀐다면 오류가 난다(--1과는 순서가 바뀌어도 상관없다, 오히려 --1위로 보내는 것이 로직상 깔끔해보이기도 한다). 삼각형이 아닌 것들을 먼저 필터링하고, 이후 삼각형 정의에 의해 정삼각형 -> 이등변삼각형 -> 삼각형 순서로 쿼리 조건을 짜면 매우 로직을 짜면 된다.
+```
+
